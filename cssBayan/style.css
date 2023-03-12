@@ -1,0 +1,143 @@
+* {
+    box-sizing: border-box;
+    font-family: 'Teko', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-size: 62.5%;
+    background: hsl(54deg 100% 62% / 12%);
+}
+
+.wrapper {
+    display: grid;
+    min-height: 100vh;
+    place-items: center;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: clamp(25rem, 50%, 90rem);
+    height: 100%;
+    padding-top: 0;
+    padding-bottom: 2rem;
+    margin-inline: clamp(.1rem, 5vw, 2rem);
+}
+
+.title {
+    font-size: clamp(1.2rem, 5vw, 1.8rem);
+    margin: 1rem;
+    text-shadow: 0 0 0.3rem hsla(66, 25%, 34%, 0.8);
+}
+
+.accordion {
+    display: grid;
+    position: relative;
+    width: 100%;
+    place-content: center;
+    justify-items: center;
+    padding-block: 0;
+    padding-inline: clamp(1rem, 5vw, 4rem);
+    box-shadow: 0px 1px 0rem 0px hsl(0deg 0% 0% / 20%);
+    overflow: hidden;
+    transition: 0.3s ease-in-out;
+}
+
+.accordion:hover {
+    cursor: pointer;
+}
+
+.accordion::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-color: hsla(54, 82%, 22%, 0.1);
+    transition: .3s ease-in-out;
+}
+
+.accordion:hover::before {
+    background-color: hsla(0, 0%, 0%, 0.01);
+}
+
+.accordion:nth-child(4) .content__img {
+    height: 100%;
+}
+
+.accordion:hover .content {
+    margin-bottom: 1rem;
+}
+
+.content:before {
+    content: "\25BD";
+    position: absolute;
+    top: 1rem;
+    right: clamp(1rem, 5vw, 3rem);
+}
+
+.accordion:hover .content:before {
+    transform: rotate(180deg);
+    transition: transform 0.3s ease-in-out;
+}
+
+.content__title {
+    font-size: clamp(1.3rem, 5vw, 2rem);
+    text-align: center;
+    color: hsl(0, 0%, 100%);
+    text-shadow: 0 0 0.3rem hsla(0, 0%, 0%, 0.8);
+    margin: clamp(1rem, 5vw, 1.5rem);
+    transform: scale(1);
+    transition: transform 0.5s ease-in-out;
+}
+
+.accordion:hover .content__title {
+    transform: scale(0.5);
+    transition: transform 0.3s ease-in-out;
+}
+
+.accordion:hover .content__item {
+    margin-bottom: clamp(2rem, 5vw, 5rem);
+}
+
+.content__text {
+    height: 0;
+    background-color: hsl(54deg 100% 26% / 25%);
+    color: hsl(0, 0%, 100%);
+    text-align: center;
+    font-size: clamp(.9rem, 5vw, 1.3rem);
+    padding: 0;
+    overflow: hidden;
+    transition: 0.5s ease-in-out;
+}
+
+.accordion:hover .content__text {
+    height: auto;
+    padding: clamp(.5rem, 5vw, 1rem);
+    margin-bottom: 1rem;
+}
+
+.content__img {
+    display: block;
+    margin: 0 auto;
+    width: clamp(80%, 50%, 100%);
+    height: 0;
+    box-shadow: 0 0 0.5rem hsla(0, 0%, 0%, 0.5);
+    border-radius: .2rem;
+    overflow: hidden;
+    transition: all 0.6s ease-in-out;
+}
+
+.accordion:hover .content__img {
+    width: clamp(80%, 50%, 100%);
+    height: auto;
+}
+
+.content__img:focus {
+    transform: scale(1.5);
+}
+
+.content__img:not(:hover) {
+    transform: scale(1)
+}
